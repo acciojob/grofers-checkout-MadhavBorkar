@@ -2,30 +2,19 @@ const getSumBtn = document.createElement("button");
 getSumBtn.textContent = "Get Total Price";
 document.body.appendChild(getSumBtn);
 
+const ans = document.createElement("div");
+ans.id = "ans";
+document.body.appendChild(ans);
+
 const getSum = () => {
-//Add your code here
-  const prices = document.querySelectorAll(".price");
+  const prices = document.querySelectorAll(".prices");
   let total = 0;
 
   prices.forEach(p => {
     total += Number(p.textContent);
   });
 
-  const table = document.querySelector("table");
-
-  // Prevent duplicate total rows
-  const oldRow = document.querySelector(".total-row");
-  if (oldRow) oldRow.remove();
-
-  const row = document.createElement("tr");
-  row.className = "total-row";
-
-  const cell = document.createElement("td");
-  cell.colSpan = 2;
-  cell.textContent = `Total: Rs ${total}`;
-
-  row.appendChild(cell);
-  table.appendChild(row);
+  ans.textContent = total;
 };
 
 getSumBtn.addEventListener("click", getSum);
